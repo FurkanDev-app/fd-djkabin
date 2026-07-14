@@ -1,0 +1,4 @@
+web/node_modules/
+web/*.log
+.DS_Store
+web/tsconfig.tsbuildinfo
