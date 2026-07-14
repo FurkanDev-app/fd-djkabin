@@ -71,12 +71,12 @@ export function installMock(): void {
             ui_control_panel: 'MÜZİK VE EFEKT KONTROLÜ',
           },
           soundboard: [
-            { id: 'airhorn', label: 'Air Horn', icon: '📯', url: '' },
-            { id: 'applause', label: 'Applause', icon: '👏', url: '' },
-            { id: 'siren', label: 'Siren', icon: '🚨', url: '' },
-            { id: 'drop', label: 'Drop', icon: '💥', url: '' },
-            { id: 'rewind', label: 'Rewind', icon: '⏪', url: '' },
-            { id: 'letsgo', label: "Let's Go!", icon: '🔥', url: '' },
+            { id: 'airhorn', label: 'Air Horn', icon: 'campaign', url: '' },
+            { id: 'applause', label: 'Applause', icon: 'celebration', url: '' },
+            { id: 'siren', label: 'Siren', icon: 'e911_emergency', url: '' },
+            { id: 'drop', label: 'Drop', icon: 'graphic_eq', url: '' },
+            { id: 'rewind', label: 'Rewind', icon: 'fast_rewind', url: '' },
+            { id: 'letsgo', label: "Let's Go!", icon: 'local_fire_department', url: '' },
           ],
           effectsConfig: {
             laser: { label: 'Lasers', hasSpeed: true, hasColor: true, colors: [[255, 0, 80], [0, 120, 255], [0, 255, 120], [255, 200, 0], [180, 0, 255]] },

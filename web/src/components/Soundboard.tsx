@@ -19,7 +19,7 @@ export default function Soundboard({ items, t, control }: Props) {
             onClick={() => control('soundboard', { id: sfx.id })}
             aria-label={sfx.label}
           >
-            <span className="sfx-icon" aria-hidden>{sfx.icon}</span>
+            <span className="sfx-icon material-symbol" aria-hidden>{sfx.icon}</span>
             <span>{sfx.label}</span>
           </button>
         ))}

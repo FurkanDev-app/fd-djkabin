@@ -105,13 +105,14 @@ Config.Effects = {
 
 -- Soundboard - url olarak dış link ya da NUI içi dosya kullanılabilir.
 -- Kendi ses dosyalarını web/public/sfx/ altına koyup 'sfx/dosya.mp3' yazabilirsin.
+-- icon: Google Material Symbols ikon adı (https://fonts.google.com/icons)
 Config.Soundboard = {
-    { id = 'airhorn',  label = 'Air Horn',   icon = '📯', url = 'https://www.myinstants.com/media/sounds/dj-airhorn-sound-effect-kingbeatz_1.mp3' },
-    { id = 'applause', label = 'Applause',   icon = '👏', url = 'https://www.myinstants.com/media/sounds/applause-2.mp3' },
-    { id = 'siren',    label = 'Siren',      icon = '🚨', url = 'https://www.myinstants.com/media/sounds/air-raid-siren.mp3' },
-    { id = 'drop',     label = 'Drop',       icon = '💥', url = 'https://www.myinstants.com/media/sounds/bass-drop.mp3' },
-    { id = 'rewind',   label = 'Rewind',     icon = '⏪', url = 'https://www.myinstants.com/media/sounds/dj-rewind.mp3' },
-    { id = 'letsgo',   label = "Let's Go!",  icon = '🔥', url = 'https://www.myinstants.com/media/sounds/lets-go_mMundI4.mp3' },
+    { id = 'airhorn',  label = 'Air Horn',   icon = 'campaign',              url = 'https://www.myinstants.com/media/sounds/dj-airhorn-sound-effect-kingbeatz_1.mp3' },
+    { id = 'applause', label = 'Applause',   icon = 'celebration',           url = 'https://www.myinstants.com/media/sounds/applause-2.mp3' },
+    { id = 'siren',    label = 'Siren',      icon = 'e911_emergency',        url = 'https://www.myinstants.com/media/sounds/air-raid-siren.mp3' },
+    { id = 'drop',     label = 'Drop',       icon = 'graphic_eq',            url = 'https://www.myinstants.com/media/sounds/bass-drop.mp3' },
+    { id = 'rewind',   label = 'Rewind',     icon = 'fast_rewind',           url = 'https://www.myinstants.com/media/sounds/dj-rewind.mp3' },
+    { id = 'letsgo',   label = "Let's Go!",  icon = 'local_fire_department', url = 'https://www.myinstants.com/media/sounds/lets-go_mMundI4.mp3' },
 }
 
 -- Ses yayılım algoritmaları (client'ta kullanılır)

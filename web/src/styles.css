@@ -1,3 +1,13 @@
+/* Google Material Symbols (Rounded, FILL 1) - kaynağa gömülü, dış bağlantı gerektirmez.
+   İkon adları: https://fonts.google.com/icons */
+@font-face {
+  font-family: 'Material Symbols Rounded';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('./assets/material-symbols-rounded.woff2') format('woff2');
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 /* Design tokens - accent booth'tan gelir (--accent inline set edilir) */
@@ -349,7 +359,23 @@ select {
   border-color: var(--accent); color: #fff;
 }
 .sfx-btn:active { transform: scale(0.95); }
-.sfx-icon { font-size: 17px; }
+.sfx-icon { font-size: 20px; }
+
+/* Google Material Symbols (index.html'de yüklenir); ikon adı ligature olarak yazılır */
+.material-symbol {
+  font-family: 'Material Symbols Rounded';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+  -webkit-font-smoothing: antialiased;
+}
 
 /* ---- Scrollbar ---- */
 ::-webkit-scrollbar { width: 6px; }
