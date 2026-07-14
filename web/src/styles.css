@@ -52,9 +52,9 @@ button { font-family: inherit; }
 }
 
 .panel {
-  width: 860px;
-  max-width: 92vw;
-  max-height: 88vh;
+  width: 1240px;
+  max-width: 94vw;
+  max-height: 92vh;
   background: rgba(12, 10, 16, 0.96);
   border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
   border-radius: var(--r-xl);
@@ -110,24 +110,52 @@ button { font-family: inherit; }
 .close-btn:hover { background: rgba(255, 60, 60, 0.22); color: #fff; }
 .close-btn:active { transform: scale(0.94); }
 
+/* Üç kolon; tüm bölümler tek bakışta, ana eksende kaydırma yok.
+   Uzun listeler kalan alana sığacak şekilde daralır ve yalnız
+   kendi içinde kaydırılır. */
 .columns {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: 1fr 1fr 1.12fr;
   gap: var(--sp-4);
   padding: var(--sp-4) 18px 18px;
-  overflow-y: auto;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
 }
-@media (max-width: 900px) {
+@media (max-width: 1160px) {
+  .columns { grid-template-columns: 1fr 1fr; overflow-y: auto; }
+}
+@media (max-width: 780px) {
   .columns { grid-template-columns: 1fr; }
 }
-.col { display: flex; flex-direction: column; gap: var(--sp-4); min-width: 0; }
+
+/* Kısa ekranlar (768p ve altı): boşlukları sıkılaştır, listeleri kısalt */
+@media (max-height: 840px) {
+  .columns { gap: var(--sp-3); padding: var(--sp-3) 16px 16px; }
+  .col { gap: var(--sp-3); }
+  .card { padding: var(--sp-3); }
+  .card h2 { margin-bottom: var(--sp-2); }
+  .np-art { width: 52px; height: 52px; }
+  .effect-row { padding: 7px 0; }
+  .sfx-btn { padding: 7px 4px; }
+}
+.col { display: flex; flex-direction: column; gap: var(--sp-4); min-width: 0; min-height: 0; }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 0 0 auto;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
   padding: var(--sp-4);
 }
+.card > * { flex-shrink: 0; }
+/* Liste taşıyan kartlar boş alanı doldurur, listeleri gerekince daralır */
+.card.grow { flex: 1 1 auto; }
+.card.grow .queue-list,
+.card.grow .playlist-list { flex: 1 1 auto; min-height: 0; }
 .card h2 {
   display: flex; align-items: center; gap: var(--sp-2);
   font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
@@ -239,7 +267,7 @@ select {
 .swatch.selected { border-color: #fff; }
 
 /* ---- Queue ---- */
-.queue-list { display: flex; flex-direction: column; gap: 6px; max-height: 190px; overflow-y: auto; }
+.queue-list { display: flex; flex-direction: column; gap: 6px; max-height: 240px; overflow-y: auto; }
 .queue-item {
   display: flex; align-items: center; gap: var(--sp-3);
   background: var(--surface); border: 1px solid var(--border);
@@ -294,7 +322,7 @@ select {
 .wide-btn.fit { width: auto; flex: 0 0 auto; padding: 9px 14px; }
 
 /* ---- Playlists ---- */
-.playlist-list { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; max-height: 220px; overflow-y: auto; }
+.playlist-list { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; max-height: 260px; overflow-y: auto; }
 .playlist-item {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: var(--r-md); padding: var(--sp-2) 10px;

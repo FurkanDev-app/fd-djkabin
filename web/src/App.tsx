@@ -107,7 +107,10 @@ export default function App() {
           <div className="col">
             <NowPlaying booth={booth} receivedAt={receivedAt.current} t={t} control={control} />
             <Settings booth={booth} t={t} control={control} />
+          </div>
+          <div className="col">
             <Effects booth={booth} config={effectsConfig} t={t} control={control} />
+            <Soundboard items={soundboard} t={t} control={control} />
           </div>
           <div className="col">
             <Queue booth={booth} t={t} control={control} />
@@ -118,7 +121,6 @@ export default function App() {
               control={control}
               onAddCurrent={addTrackToPlaylist}
             />
-            <Soundboard items={soundboard} t={t} control={control} />
           </div>
         </div>
       </div>

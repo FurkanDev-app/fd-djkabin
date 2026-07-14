@@ -21,7 +21,7 @@ export default function Queue({ booth, t, control }: Props) {
   };
 
   return (
-    <section className="card">
+    <section className="card grow">
       <h2>{t('ui_queue')}</h2>
       <div className="queue-list">
         {queue.length === 0 && <p className="muted">{t('ui_queue_empty')}</p>}

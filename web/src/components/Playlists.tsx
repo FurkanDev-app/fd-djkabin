@@ -24,7 +24,7 @@ export default function Playlists({ booth, playlists, t, control, onAddCurrent }
   };
 
   return (
-    <section className="card">
+    <section className="card grow">
       <h2>{t('ui_playlists')}</h2>
       <div className="add-song-btns">
         <input
