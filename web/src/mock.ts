@@ -59,6 +59,7 @@ export function installMock(): void {
           locale: {
             ui_now_playing: 'ŞİMDİ ÇALIYOR', ui_nothing_playing: 'Şu an bir şey çalmıyor',
             ui_settings: 'AYARLAR', ui_music_volume: 'Müzik Sesi', ui_music_radius: 'Ses Menzili',
+            ui_falloff: 'Ses Dağılımı', ui_no_playlists: 'Henüz playlist yok — yukarıdan ilkini oluştur.',
             ui_effects: 'KULÜP EFEKTLERİ', ui_queue: 'SIRA', ui_queue_empty: 'Sıra boş',
             ui_clear_queue: 'Sırayı Temizle', ui_add_song: 'Şarkı Ekle',
             ui_add_song_placeholder: 'YouTube veya ses linki yapıştır...',

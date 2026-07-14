@@ -19,6 +19,8 @@
     "ui_settings": "AYARLAR",
     "ui_music_volume": "Müzik Sesi",
     "ui_music_radius": "Ses Menzili",
+    "ui_falloff": "Ses Dağılımı",
+    "ui_no_playlists": "Henüz playlist yok — yukarıdan ilkini oluştur.",
     "ui_effects": "KULÜP EFEKTLERİ",
     "ui_queue": "SIRA",
     "ui_queue_empty": "Sıra boş",

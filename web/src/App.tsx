@@ -8,6 +8,7 @@ import Effects from './components/Effects';
 import Queue from './components/Queue';
 import Playlists from './components/Playlists';
 import Soundboard from './components/Soundboard';
+import { IconClose } from './components/icons';
 
 export default function App() {
   const [visible, setVisible] = useState(false);
@@ -98,7 +99,9 @@ export default function App() {
             <span className="subtitle">{t('ui_control_panel')}</span>
           </div>
           {streamerMode && <span className="streamer-badge">STREAMER</span>}
-          <button className="close-btn" onClick={close} title={t('ui_close')}>✕</button>
+          <button className="close-btn" onClick={close} aria-label={t('ui_close')} title={t('ui_close')}>
+            <IconClose size={15} />
+          </button>
         </header>
         <div className="columns">
           <div className="col">

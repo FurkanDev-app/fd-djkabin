@@ -19,6 +19,8 @@
     "ui_settings": "SETTINGS",
     "ui_music_volume": "Music Volume",
     "ui_music_radius": "Music Radius",
+    "ui_falloff": "Falloff",
+    "ui_no_playlists": "No playlists yet — create your first one above.",
     "ui_effects": "CLUB EFFECTS",
     "ui_queue": "QUEUE",
     "ui_queue_empty": "Queue is empty",
