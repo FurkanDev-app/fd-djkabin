@@ -11,6 +11,25 @@ RegisterNetEvent('fd-djkabin:client:notify', function(msg, ntype)
     Bridge.Notify(msg, ntype)
 end)
 
+-- Panelde gösterilecek efekt listesi Config.Effects'ten türetilir;
+-- sıra Config.EffectOrder ile sabitlenir (dizi olarak gönderilir).
+local function buildEffectsConfig()
+    local out = {}
+    for _, name in ipairs(Config.EffectOrder) do
+        local cfg = Config.Effects[name]
+        if cfg then
+            out[#out + 1] = {
+                name = name,
+                label = cfg.label,
+                colors = cfg.colors,
+                hasSpeed = cfg.ui and cfg.ui.speed or false,
+                hasColor = cfg.ui and cfg.ui.color or false,
+            }
+        end
+    end
+    return out
+end
+
 RegisterNetEvent('fd-djkabin:client:openUI', function(booth, playlists)
     panelOpen = true
     SetNuiFocus(true, true)
@@ -20,13 +39,7 @@ RegisterNetEvent('fd-djkabin:client:openUI', function(booth, playlists)
         playlists = playlists,
         locale = GetLocaleDict(),
         soundboard = Config.Soundboard,
-        effectsConfig = {
-            laser = { label = Config.Effects.laser.label, colors = Config.Effects.laser.colors, hasSpeed = true, hasColor = true },
-            smoke = { label = Config.Effects.smoke.label },
-            lights = { label = Config.Effects.lights.label, hasSpeed = true },
-            particles = { label = Config.Effects.particles.label },
-            spotlight = { label = Config.Effects.spotlight.label },
-        },
+        effectsConfig = buildEffectsConfig(),
         streamerMode = StreamerMode,
     })
 end)

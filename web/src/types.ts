@@ -55,6 +55,7 @@ export interface SoundboardItem {
 }
 
 export interface EffectConfig {
+  name: string;
   label: string;
   colors?: number[][];
   hasSpeed?: boolean;

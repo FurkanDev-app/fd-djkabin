@@ -7,13 +7,31 @@
 Booths = {}
 
 local function defaultEffects()
-    return {
-        laser     = { enabled = false, speed = 1.0, colorIndex = 1 },
-        smoke     = { enabled = false },
-        lights    = { enabled = false, speed = 1.0 },
-        particles = { enabled = false },
-        spotlight = { enabled = false },
-    }
+    local effects = {}
+    for name, cfg in pairs(Config.Effects) do
+        effects[name] = {
+            enabled = false,
+            speed = cfg.defaultSpeed or 1.0,
+            colorIndex = 1,
+        }
+    end
+    return effects
+end
+
+-- DB'den yüklenen eski kayıtlarda sonradan eklenen efektler bulunmaz;
+-- eksik anahtarları tamamla ve tüm efektleri kapalı başlat.
+local function normalizeEffects(effects)
+    effects = type(effects) == 'table' and effects or {}
+    for name, def in pairs(defaultEffects()) do
+        if type(effects[name]) ~= 'table' then
+            effects[name] = def
+        else
+            effects[name].enabled = false
+            if effects[name].speed == nil then effects[name].speed = def.speed end
+            if effects[name].colorIndex == nil then effects[name].colorIndex = def.colorIndex end
+        end
+    end
+    return effects
 end
 
 local function defaultSettings(overrides)
@@ -165,11 +183,9 @@ CreateThread(function()
             local ok, saved = pcall(json.decode, row.settings)
             if ok and type(saved) == 'table' then
                 for k, v in pairs(saved) do settings[k] = v end
-                settings.effects = settings.effects or defaultEffects()
-                -- runtime'a taşınmaması gereken bir alan yok; efekt enabled durumları restart'ta kapatılır
-                for _, eff in pairs(settings.effects) do eff.enabled = false end
             end
         end
+        settings.effects = normalizeEffects(settings.effects)
         registerBooth({
             id = cfg.id, label = cfg.label, coords = cfg.coords, heading = cfg.heading,
             jobs = cfg.jobs, public = cfg.public, fromConfig = true, settings = settings,
@@ -195,10 +211,9 @@ CreateThread(function()
                 local ok, saved = pcall(json.decode, row.settings)
                 if ok and type(saved) == 'table' then
                     for k, v in pairs(saved) do settings[k] = v end
-                    settings.effects = settings.effects or defaultEffects()
-                    for _, eff in pairs(settings.effects) do eff.enabled = false end
                 end
             end
+            settings.effects = normalizeEffects(settings.effects)
             local jobs = {}
             if row.jobs then
                 local ok, saved = pcall(json.decode, row.jobs)

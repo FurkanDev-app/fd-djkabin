@@ -16,7 +16,7 @@ export default function App() {
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
   const [locale, setLocale] = useState<Locale>({});
   const [soundboard, setSoundboard] = useState<SoundboardItem[]>([]);
-  const [effectsConfig, setEffectsConfig] = useState<Record<string, EffectConfig>>({});
+  const [effectsConfig, setEffectsConfig] = useState<EffectConfig[]>([]);
   const [streamerMode, setStreamerMode] = useState(false);
   const receivedAt = useRef(Date.now());
   const boothRef = useRef<Booth | null>(null);
@@ -43,7 +43,7 @@ export default function App() {
           setPlaylists(msg.playlists ?? []);
           setLocale(msg.locale ?? {});
           setSoundboard(msg.soundboard ?? []);
-          setEffectsConfig(msg.effectsConfig ?? {});
+          setEffectsConfig(msg.effectsConfig ?? []);
           setStreamerMode(!!msg.streamerMode);
           setVisible(true);
           break;

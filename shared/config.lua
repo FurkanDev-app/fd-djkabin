@@ -64,9 +64,14 @@ Config.Booths = {
 }
 
 -- Efekt tanımları. Client tarafında booth konumuna göre render edilir.
+-- ui = { speed = bool, color = bool } -> panelde hangi ayarlar gösterilir.
+-- Panel sırası Config.EffectOrder ile belirlenir.
+Config.EffectOrder = { 'laser', 'lights', 'strobe', 'skybeams', 'dancefloor', 'smoke', 'particles', 'fireworks', 'firejets', 'spotlight' }
+
 Config.Effects = {
     laser = {
         label = 'Lasers',
+        ui = { speed = true, color = true },
         colors = { { 255, 0, 80 }, { 0, 120, 255 }, { 0, 255, 120 }, { 255, 200, 0 }, { 180, 0, 255 } },
         beamCount = 6,
         defaultSpeed = 1.0,   -- panelden 0.2 - 3.0 arası ayarlanır
@@ -75,6 +80,7 @@ Config.Effects = {
     },
     smoke = {
         label = 'Smoke',
+        ui = {},
         asset = 'scr_ba_club',
         effect = 'scr_ba_club_smoke_machine',
         offsets = { vec3(-2.0, 0.0, 0.0), vec3(2.0, 0.0, 0.0) },
@@ -82,24 +88,72 @@ Config.Effects = {
     },
     lights = {
         label = 'Club Lights',
+        ui = { speed = true },
         colors = { { 255, 0, 80 }, { 0, 120, 255 }, { 0, 255, 120 }, { 255, 120, 0 } },
         defaultSpeed = 1.0,
         height = 6.0,
         radius = 18.0,
     },
     particles = {
-        label = 'Particles',
+        label = 'Confetti',
+        ui = { speed = true },
         asset = 'scr_ba_club',
         effect = 'scr_ba_club_confetti_burst',
-        interval = 4000, -- ms
+        interval = 4000, -- ms (hız çarpanıyla bölünür)
         offset = vec3(0.0, 0.0, 4.0),
         scale = 2.0,
     },
     spotlight = {
         label = 'Spot Light',
+        ui = {},
         height = 8.0,
         color = { 255, 255, 255 },
         intensity = 8.0,
+    },
+    strobe = {
+        label = 'Strobe',
+        ui = { speed = true },
+        height = 4.0,
+        range = 25.0,
+        intensity = 3.0,
+        interval = 120, -- ms (bir aç+kapa döngüsü; hız çarpanıyla bölünür)
+    },
+    fireworks = {
+        label = 'Fireworks',
+        ui = { speed = true },
+        asset = 'scr_indep_fireworks',
+        effect = 'scr_indep_firework_starburst',
+        interval = 5000, -- ms
+        height = 20.0,
+        spread = 10.0,   -- patlama noktası yatay rastgelelik
+        scale = 1.5,
+    },
+    firejets = {
+        label = 'Fire Jets',
+        ui = { speed = true },
+        asset = 'scr_indep_fireworks',
+        effect = 'scr_indep_firework_fountain',
+        interval = 3000, -- ms
+        offsets = { vec3(-3.0, 1.5, 0.0), vec3(3.0, 1.5, 0.0) },
+        scale = 1.2,
+    },
+    skybeams = {
+        label = 'Sky Beams',
+        ui = { speed = true, color = true },
+        colors = { { 255, 255, 255 }, { 255, 0, 80 }, { 0, 120, 255 }, { 0, 255, 120 }, { 180, 0, 255 } },
+        beamCount = 4,
+        defaultSpeed = 1.0,
+        height = 5.0,
+        radius = 14.0,   -- kolonların booth çevresindeki dağılım yarıçapı
+        brightness = 10.0,
+    },
+    dancefloor = {
+        label = 'Dance Floor',
+        ui = { speed = true, color = true },
+        colors = { { 226, 75, 209 }, { 0, 120, 255 }, { 0, 255, 120 }, { 255, 200, 0 }, { 255, 0, 80 } },
+        offset = vec3(0.0, 3.5, 0.0), -- booth önü (heading'e göre döndürülür)
+        radius = 5.0,
+        defaultSpeed = 1.0,
     },
 }
 

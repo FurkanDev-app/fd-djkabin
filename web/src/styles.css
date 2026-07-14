@@ -146,7 +146,7 @@ button { font-family: inherit; }
   .card { padding: var(--sp-3); }
   .card h2 { margin-bottom: var(--sp-2); }
   .np-art { width: 52px; height: 52px; }
-  .effect-row { padding: 7px 0; }
+  .effect-cell { padding: 5px 9px; }
   .sfx-btn { padding: 7px 4px; }
 }
 .col { display: flex; flex-direction: column; gap: var(--sp-4); min-width: 0; min-height: 0; }
@@ -165,7 +165,8 @@ button { font-family: inherit; }
 /* Liste taşıyan kartlar boş alanı doldurur, listeleri gerekince daralır */
 .card.grow { flex: 1 1 auto; }
 .card.grow .queue-list,
-.card.grow .playlist-list { flex: 1 1 auto; min-height: 0; }
+.card.grow .playlist-list,
+.card.grow .effects-grid { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
 .card h2 {
   display: flex; align-items: center; gap: var(--sp-2);
   font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
@@ -249,12 +250,28 @@ select {
   border-radius: var(--r-sm); padding: 6px 8px; font-size: 12px; cursor: pointer;
 }
 
-/* ---- Effects ---- */
-.effect-row { border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 10px 0; }
-.effect-row:first-of-type { border-top: none; padding-top: 0; }
-.effect-row:last-of-type { padding-bottom: 0; }
-.effect-head { display: flex; align-items: center; justify-content: space-between; }
-.effect-label { display: flex; align-items: center; gap: var(--sp-2); font-size: 13px; }
+/* ---- Effects: 2 sütunlu kompakt grid; ayar satırı tam genişlik ---- */
+.effects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.effect-cell {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-2);
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: 7px 10px;
+  transition: border-color var(--t-fast) var(--ease-out);
+}
+.effect-cell.on { border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.effect-settings {
+  grid-column: 1 / -1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 6px 10px 8px;
+  margin-top: -2px;
+}
+.effect-label { font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .switch {
   width: 38px; height: 21px; border-radius: 12px; border: none; cursor: pointer;
   background: var(--surface-3); position: relative;
